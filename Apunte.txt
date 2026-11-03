@@ -1,0 +1,17 @@
+POST
+// Guarda la infomacion y genera un id
+URL{
+
+}
+
+DELETE
+url/(id)
+
+PUT
+url
+
+modelo vista control
+el modelado de tus tablas
+si tienes una tabla producto s, y creas un 
+controll todos los endpoints o rutas que va a tener mi api 
+puedo tener un end point con varios contextos para tener un control

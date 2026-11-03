@@ -1,0 +1,74 @@
+
+
+### Get api status
+GET http://localhost:3000/api/status
+
+### Get users
+GET http://localhost:3000/api/users
+
+### Get user by id
+GET http://localhost:3000/api/users/1
+
+
+# productosº
+
+### 1. GETBYID - Obtener producto por ID
+GET http://localhost:3000/api/producto/1
+
+### 2. GETALL - Obtener todos los productos
+GET http://localhost:3000/api/productos
+
+### 3. POST - Crear producto
+POST http://localhost:3000/api/producto
+Content-Type: application/json
+
+{
+  "nombre": "Laptop Gamer",
+  "precio": 15000.00,
+  "stock": 10,
+  "categoriaId": 1
+}
+
+### 4. PUT - Actualizar producto por ID
+PUT http://localhost:3000/api/producto/7
+Content-Type: application/json
+
+{
+  "nombre": "Laptop Gamer Pro",
+  "precio": 16500.00,
+  "stock": 12,
+  "categoriaId": 1
+}
+
+### 5. DELETE - Eliminar producto por ID
+DELETE http://localhost:3000/api/producto/7
+
+
+# venta
+
+### 1. GETBYID - Obtener venta por ID
+GET http://localhost:3000/api/venta/1
+
+### 2. GETALL - Obtener todas las ventas
+GET http://localhost:3000/api/ventas
+
+### 3. POST - Crear venta
+POST http://localhost:3000/api/venta
+Content-Type: application/json
+
+{
+  "cliente": "Carlos Mendoza",
+  "total": 1200.00
+}
+
+### 4. PUT - Actualizar venta por ID
+PUT http://localhost:3000/api/venta/1
+Content-Type: application/json
+
+{
+  "cliente": "Carlos Mendoza Actualizado",
+  "total": 1350.00
+}
+
+### 5. DELETE - Eliminar venta por ID
+DELETE http://localhost:3000/api/venta/4
