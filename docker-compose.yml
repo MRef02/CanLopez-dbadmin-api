@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   db:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: mysql:8.0
     container_name: examen
     restart: always
     environment:
