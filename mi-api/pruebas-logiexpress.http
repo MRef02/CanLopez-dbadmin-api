@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3000
+@envioId = 2
+@clienteId = 1
+@almacenId = 1
+
+### Salud
+GET {{baseUrl}}/api/status
+
+### Crear envío con paquetes iniciales (requiere cliente, almacén y dirección existentes)
+POST {{baseUrl}}/api/envios
+Content-Type: application/json
+
+{
+  "clienteId": 1,
+  "direccinOrigenId": 1,
+  "direccionDestinoId": 2,
+  "costo": 150.50,
+  "paquetes": [
+    {
+      "almacenId": 1,
+      "peso": 2.5,
+      "dimensiones": "30x20x10",
+      "contenido": "Un cojin de peso emocional"
+    }
+  ]
+}
+
+### Cambiar costo (usar un valor distinto del actual para generar auditoría)
+PUT {{baseUrl}}/api/envios/{{envioId}}/costo
+Content-Type: application/json
+
+{
+  "costo": 501.00
+}
+
+### Agregar paquete; si el almacén está lleno debe responder 400
+POST {{baseUrl}}/api/almacenes/{{almacenId}}/paquetes
+Content-Type: application/json
+
+{
+  "envioId": 2,
+  "peso": 0.3,
+  "dimensiones": "10x10x5",
+  "contenido": "Calcetines sin pareja"
+}
+
+### Registrar entrega; el trigger debe actualizar el envío
+POST {{baseUrl}}/api/envios/{{envioId}}/rastreo
+Content-Type: application/json
+
+{
+  "ubicacion": "Puerta del cliente, por fin",
+  "estado": "entregado"
+}
+
+### Envíos activos (registrado y transito)
+GET {{baseUrl}}/api/envios
+
+### Historial del cliente, incluidos entregados y cancelados
+GET {{baseUrl}}/api/clientes/{{clienteId}}/envios
